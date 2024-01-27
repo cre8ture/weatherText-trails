@@ -1,0 +1,35 @@
+#container {
+    position: relative;
+}
+
+body{
+    position: relative;
+}
+
+#trail-canvas {
+    position: absolute; /* Changed from fixed to absolute */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    z-index: -100; /* Position the canvas behind other content */
+}
+
+#windStrands {
+    position: absolute; /* Changed from relative to absolute */
+    z-index: 200;
+}
+
+#mouse-circle {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    /* background-color: red; */
+    background-color: transparent;
+    border-radius: 50%;
+    pointer-events: none;
+    box-sizing: border-box;
+    border: 1px solid transparent;
+    z-index: 1000;
+}
