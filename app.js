@@ -97,8 +97,9 @@ document.addEventListener("DOMContentLoaded", (event) => {
     .filter(([key, data]) => key.includes("wind"))
     .forEach(([key, data]) => {
       createStrand(key, data);
-      updateCanvasHeight()
     });
+
+    updateCanvasHeight()
 
     // function draw() {
     //     ctx.canvas.width  = window.innerWidth;
@@ -123,7 +124,7 @@ function updateCanvasHeight() {
       );
       ctx.strokeStyle = "rgba(0, 127, 255, 0.1)"; 
       // Define the color and opacity of the trail
-         ctx.lineWidth = 0.1; // Adjust the line width as needed
+         ctx.lineWidth = 0.4; // Adjust the line width as needed
          // Set canvas dimensions to match the entire document
     canvas.style.zIndex = "-10";
   }
@@ -140,6 +141,8 @@ function updateCanvasHeight() {
         const spanRect = span.getBoundingClientRect();
         const spanX = spanRect.left + spanRect.width / 2;
         const spanY = spanRect.top + spanRect.height / 2;
+        const spanX_d = spanRect.left + window.scrollX;
+        const spanY_d = spanRect.top + window.scrollY;
         const dx = circleCenterX - spanX;
         const dy = circleCenterY - spanY;
         const distance = Math.sqrt(dx * dx + dy * dy);
@@ -158,8 +161,8 @@ function updateCanvasHeight() {
 
           // Draw lines directly using moveX and moveY
           ctx.beginPath();
-          ctx.moveTo(spanX, spanY);
-          ctx.lineTo(spanX + moveX, spanY + moveY);
+          ctx.moveTo(spanX_d, spanY_d);
+          ctx.lineTo(spanX_d + moveX, spanY_d + moveY);
           ctx.stroke();
         //   draw()
           ctx.closePath();
